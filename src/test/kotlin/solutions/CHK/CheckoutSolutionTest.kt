@@ -25,6 +25,11 @@ class CheckoutSolutionTest {
             45+130+50+20+15,
             CheckoutSolution.checkout("BBAAAACD")
         )
+
+        assertEquals(
+            200,
+            CheckoutSolution.checkout("AAAAA")
+        )
     }
 
     @Test
@@ -43,3 +48,4 @@ class CheckoutSolutionTest {
         )
     }
 }
+
