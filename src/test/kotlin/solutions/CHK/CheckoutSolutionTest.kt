@@ -11,19 +11,30 @@ class CheckoutSolutionTest {
             CheckoutSolution.checkout("A")
         )
         assertEquals(
-            13,
-            CheckoutSolution.checkout("A")
+            130,
+            CheckoutSolution.checkout("AAA")
+        )
+        assertEquals(
+            45,
+            CheckoutSolution.checkout("BB")
         )
     }
 
     @Test
     fun `checkout - returns -1 when invalid input`() {
-
+        assertEquals(
+            -1,
+            CheckoutSolution.checkout("ZZAB")
+        )
     }
 
     @Test
     fun `checkout - return 0 when no item is found`() {
-
+        assertEquals(
+            0,
+            CheckoutSolution.checkout("")
+        )
     }
 }
+
 
