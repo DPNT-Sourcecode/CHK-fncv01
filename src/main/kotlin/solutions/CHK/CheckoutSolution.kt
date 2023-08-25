@@ -56,8 +56,8 @@ object CheckoutSolution {
 
         skusCount.forEach { (sku, amount) ->
             val specialDiscounts = specialDiscounts[sku]
-            if (specialDiscounts != null) {
-                val specialDiscount = findSuitableSpecialDiscount(amount, specialDiscounts)
+            val specialDiscount = findSuitableSpecialDiscount(amount, specialDiscounts)
+            if (specialDiscount != null) {
                 totalPrice += specialDiscount.calculateTotal(
                     amount,
                     pricesPerSKU[sku]!!
@@ -70,9 +70,10 @@ object CheckoutSolution {
         return totalPrice
     }
 
-    private fun findSuitableSpecialDiscount(amount: Int, specialDiscounts: List<SpecialDiscount>): SpecialDiscount {
-        return specialDiscounts.last{
+    private fun findSuitableSpecialDiscount(amount: Int, specialDiscounts: List<SpecialDiscount>?): SpecialDiscount? {
+        return specialDiscounts?.lastOrNull{
             it.numberOfItems <= amount
         }
     }
 }
+
