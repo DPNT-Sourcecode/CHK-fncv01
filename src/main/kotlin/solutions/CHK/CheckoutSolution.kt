@@ -45,10 +45,7 @@ object CheckoutSolution {
         skusCount.forEach { (sku, amount) ->
             val specialDiscount = specialDiscounts[sku]
             totalPrice += if (specialDiscount != null) {
-                val nonDiscountedAmount = amount % specialDiscount.numberOfItems
-                val discountedAmount = amount / specialDiscount.numberOfItems
-                (pricesPerSKU[sku]!! * nonDiscountedAmount) +
-                        (discountedAmount * specialDiscount.discountPrice)
+                specialDiscount.calculateTotal(amount, pricesPerSKU[sku]!!)
             } else {
                 pricesPerSKU[sku]!! * amount
             }
@@ -57,4 +54,5 @@ object CheckoutSolution {
         return totalPrice
     }
 }
+
 
