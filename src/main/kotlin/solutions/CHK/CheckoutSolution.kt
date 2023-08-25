@@ -57,7 +57,8 @@ object CheckoutSolution {
         skusCount.forEach { (sku, amount) ->
             val freeItem = freeItems[sku]
             if (freeItem != null && amount >= freeItem.amount && skusCount[freeItem.freeItem] != null) {
-                skusCount[freeItem.freeItem] = skusCount[freeItem.freeItem]!! - freeItem.freeItemAmount
+                val amountToRemove = amount / skusCount[freeItem.freeItem]!!
+                skusCount[freeItem.freeItem] = skusCount[freeItem.freeItem]!! - (freeItem.freeItemAmount * amountToRemove)
             }
         }
 
@@ -83,6 +84,7 @@ object CheckoutSolution {
         }
     }
 }
+
 
 
 

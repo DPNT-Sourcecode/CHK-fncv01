@@ -41,10 +41,6 @@ class CheckoutSolutionTest {
             CheckoutSolution.checkout("EEEEBB")
         )
         assertEquals(
-            160,
-            CheckoutSolution.checkout("EEEEBB")
-        )
-        assertEquals(
             380,
             CheckoutSolution.checkout("AAAAAAAAA")
         )
@@ -70,5 +66,6 @@ class CheckoutSolutionTest {
         )
     }
 }
+
 
 
