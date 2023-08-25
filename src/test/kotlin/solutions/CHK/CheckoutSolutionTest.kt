@@ -10,10 +10,12 @@ class CheckoutSolutionTest {
             50,
             CheckoutSolution.checkout("A")
         )
+
         assertEquals(
             130,
             CheckoutSolution.checkout("AAA")
         )
+
         assertEquals(
             45,
             CheckoutSolution.checkout("BB")
@@ -36,5 +38,6 @@ class CheckoutSolutionTest {
         )
     }
 }
+
 
 
