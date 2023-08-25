@@ -12,15 +12,15 @@ package solutions.CHK
  */
 object CheckoutSolution {
     private val pricesPerSKU = mapOf(
-        "A" to 50,
-        "B" to 30,
-        "C" to 20,
-        "D" to 15
+        'A' to 50,
+        'B' to 30,
+        'C' to 20,
+        'D' to 15
     )
 
     fun checkout(skus: String): Int {
-        val skusCount = mutableMapOf<String, Int>()
-        val skusList = skus.split("")
+        val skusCount = mutableMapOf<Char, Int>()
+        val skusList = skus.toCharArray()
         val totalPrice = 0
 
         skusList.forEach { sku ->
@@ -42,6 +42,7 @@ object CheckoutSolution {
         return totalPrice
     }
 }
+
 
 
 
