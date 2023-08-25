@@ -18,6 +18,16 @@ object CheckoutSolution {
         "D" to 15
     )
     fun checkout(skus: String): Int {
-
+        val skusCount = mutableMapOf<String, Int>()
+        val skusList = skus.split("")
+        skusList.forEach { sku ->
+            if (skusCount[sku] == null) {
+                skusCount[sku] = 0
+            } else {
+                skusCount[sku] += 1
+            }
+        }
+        return totalPrice
     }
 }
+
