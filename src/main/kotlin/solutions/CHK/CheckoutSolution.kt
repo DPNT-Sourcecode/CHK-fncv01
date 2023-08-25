@@ -71,12 +71,8 @@ object CheckoutSolution {
     }
 
     private fun findSuitableSpecialDiscount(amount: Int, specialDiscounts: List<SpecialDiscount>): SpecialDiscount {
-        TODO("Not yet implemented")
+        return specialDiscounts.last{
+            it.numberOfItems <= amount
+        }
     }
 }
-
-
-
-
-
-

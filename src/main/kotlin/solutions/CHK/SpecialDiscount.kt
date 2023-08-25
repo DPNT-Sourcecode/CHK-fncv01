@@ -11,5 +11,3 @@ data class SpecialDiscount(
             (discountedAmount * discountPrice)
     }
 }
-
-
