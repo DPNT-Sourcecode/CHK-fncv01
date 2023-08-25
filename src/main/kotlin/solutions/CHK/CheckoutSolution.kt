@@ -44,7 +44,8 @@ object CheckoutSolution {
             totalPrice += if (specialDiscount != null) {
                 val nonDiscountedAmount = amount % specialDiscount.numberOfItems
                 val discountedAmount = amount / specialDiscount.numberOfItems
-                pricesPerSKU[sku]!! * nonDiscountedAmount
+                (pricesPerSKU[sku]!! * nonDiscountedAmount) +
+                        (discountedAmount * specialDiscount.discountPrice)
             } else {
                 pricesPerSKU[sku]!! * amount
             }
@@ -53,10 +54,3 @@ object CheckoutSolution {
         return totalPrice
     }
 }
-
-
-
-
-
-
-
