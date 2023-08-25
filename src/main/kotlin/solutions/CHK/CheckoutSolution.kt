@@ -1,25 +1,28 @@
 package solutions.CHK
 
 /**
- * +------+-------+----------------+
- * | Item | Price | Special offers |
- * +------+-------+----------------+
- * | A    | 50    | 3A for 130     |
- * | B    | 30    | 2B for 45      |
- * | C    | 20    |                |
- * | D    | 15    |                |
- * +------+-------+----------------+
+ * +------+-------+------------------------+
+ * | Item | Price | Special offers         |
+ * +------+-------+------------------------+
+ * | A    | 50    | 3A for 130, 5A for 200 |
+ * | B    | 30    | 2B for 45              |
+ * | C    | 20    |                        |
+ * | D    | 15    |                        |
+ * | E    | 40    | 2E get one B free      |
+ * +------+-------+------------------------+
  */
 object CheckoutSolution {
     private val pricesPerSKU = mapOf(
         'A' to 50,
         'B' to 30,
         'C' to 20,
-        'D' to 15
+        'D' to 15,
+        'E' to 40
     )
     private val specialDiscounts = mapOf(
         'A' to SpecialDiscount(3, 130),
-        'B' to SpecialDiscount(2, 45)
+        'B' to SpecialDiscount(2, 45),
+        'E' to SpecialDiscount(2)
     )
 
     fun checkout(skus: String): Int {
@@ -54,3 +57,4 @@ object CheckoutSolution {
         return totalPrice
     }
 }
+
