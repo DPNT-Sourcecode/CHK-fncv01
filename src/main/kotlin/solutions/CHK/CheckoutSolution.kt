@@ -22,12 +22,16 @@ object CheckoutSolution {
     private val specialDiscounts = mapOf(
         'A' to SpecialDiscount(3, 130),
         'B' to SpecialDiscount(2, 45),
-        'E' to SpecialDiscount(2)
     )
 
     fun checkout(skus: String): Int {
-        val skusCount = mutableMapOf<Char, Int>()
         val skusList = skus.toCharArray()
+
+        return calculatePrices(skusList)
+    }
+
+    private fun calculatePrices(skusList: CharArray): Int {
+        val skusCount = mutableMapOf<Char, Int>()
         var totalPrice = 0
 
         skusList.forEach { sku ->
@@ -54,5 +58,6 @@ object CheckoutSolution {
         return totalPrice
     }
 }
+
 
 

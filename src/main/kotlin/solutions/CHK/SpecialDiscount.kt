@@ -7,8 +7,9 @@ data class SpecialDiscount(
     fun calculateTotal(amount: Int, normalPrice: Int): Int {
         val nonDiscountedAmount = amount % numberOfItems
         val discountedAmount = amount / numberOfItems
-        (normalPrice * nonDiscountedAmount) +
+        return (normalPrice * nonDiscountedAmount) +
             (discountedAmount * discountPrice)
     }
 }
+
 
