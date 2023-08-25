@@ -20,8 +20,13 @@ object CheckoutSolution {
         'E' to 40
     )
     private val specialDiscounts = mapOf(
-        'A' to SpecialDiscount(mapOf(3 to 130, 5 to 200)),
-        'B' to SpecialDiscount(mapOf(2 to 45)),
+        'A' to listOf(
+            SpecialDiscount(3, 130),
+            SpecialDiscount(5, 200)
+        ),
+        'B' to listOf(
+            SpecialDiscount(2, 45)
+        )
     )
     private val freeItems = mapOf(
         'E' to FreeItem(2, 'B', 1)
@@ -50,17 +55,25 @@ object CheckoutSolution {
         }
 
         skusCount.forEach { (sku, amount) ->
-            val specialDiscount = specialDiscounts[sku]
-            totalPrice += if (specialDiscount != null) {
-                specialDiscount.calculateTotal(amount, pricesPerSKU[sku]!!)
+            val specialDiscounts = specialDiscounts[sku]
+            if (specialDiscounts != null) {
+                specialDiscounts.forEach { specialDiscount ->
+                    if (specialDiscount.appliesTo(amount)) {
+                        totalPrice += specialDiscount.calculateTotal(
+                            amount,
+                            pricesPerSKU[sku]!!
+                        )
+                    }
+                }
             } else {
-                pricesPerSKU[sku]!! * amount
+                totalPrice += pricesPerSKU[sku]!! * amount
             }
         }
 
         return totalPrice
     }
 }
+
 
 
 
