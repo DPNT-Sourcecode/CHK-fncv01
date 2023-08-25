@@ -55,6 +55,13 @@ object CheckoutSolution {
         }
 
         skusCount.forEach { (sku, amount) ->
+            val freeItem = freeItems[sku]
+            if (freeItem != null && amount >= free && skusCount[freeItem.freeItem] != null) {
+                skusCount[freeItem.freeItem] = skusCount[freeItem.freeItem]!! - freeItem.amount
+            }
+        }
+
+        skusCount.forEach { (sku, amount) ->
             val specialDiscounts = specialDiscounts[sku]
             val specialDiscount = findSuitableSpecialDiscount(amount, specialDiscounts)
             if (specialDiscount != null) {
@@ -76,4 +83,5 @@ object CheckoutSolution {
         }
     }
 }
+
 
